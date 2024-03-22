@@ -63,15 +63,23 @@ document.addEventListener('DOMContentLoaded', function () {
     attachEventListeners('nibsQuantity', 'nibsQuantitySlider');
     attachEventListeners('butterQuantity', 'butterQuantitySlider');
     attachEventListeners('sugarQuantity', 'sugarQuantitySlider');
-    
+
     calculateRefine();
+
+    if ('serviceworker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function (error) {
+            console.log('ServiceWorker registration failed: ', error);
+        });
+    }
 });
 
 function attachEventListeners(inputId, sliderId) {
-    document.getElementById(inputId).addEventListener('input', function(event) {
+    document.getElementById(inputId).addEventListener('input', function (event) {
         updateSliderValue(event, inputId, sliderId);
     });
-    document.getElementById(sliderId).addEventListener('input', function(event) {
+    document.getElementById(sliderId).addEventListener('input', function (event) {
         updateSliderValue(event, inputId, sliderId);
     });
 }
