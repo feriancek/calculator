@@ -5,10 +5,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 var chart;
 
-function updateSliderValue(inputId, sliderId) {
-    var inputValue = document.getElementById(inputId);
-    var sliderValue = document.getElementById(sliderId);
-    inputValue.value = sliderValue.value;
+function updateSliderValue(event, inputId, sliderId) {
+    var input = document.getElementById(inputId);
+    var slider = document.getElementById(sliderId);
+
+    if (event.target.type === "range") {
+        input.value = event.target.value;
+    } else if (event.target.type === "number") {
+        slider.value = event.target.value;
+    }
 
     calculateRefine();
 }
@@ -52,4 +57,29 @@ function updateChart(nibsQuantity, butterQuantity, sugarQuantity) {
         chart.data.datasets[0].data = [nibsQuantity, butterQuantity, sugarQuantity];
         chart.update();
     }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    attachEventListeners('nibsQuantity', 'nibsQuantitySlider');
+    attachEventListeners('butterQuantity', 'butterQuantitySlider');
+    attachEventListeners('sugarQuantity', 'sugarQuantitySlider');
+
+    calculateRefine();
+
+    if ('serviceworker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function (error) {
+            console.log('ServiceWorker registration failed: ', error);
+        });
+    }
+});
+
+function attachEventListeners(inputId, sliderId) {
+    document.getElementById(inputId).addEventListener('input', function (event) {
+        updateSliderValue(event, inputId, sliderId);
+    });
+    document.getElementById(sliderId).addEventListener('input', function (event) {
+        updateSliderValue(event, inputId, sliderId);
+    });
 }
