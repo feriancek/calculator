@@ -58,7 +58,8 @@
 		<input type="text" placeholder="butter" class="text-box">
 	</div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.js"></script>
-  <script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js"></script>
+	<script>
     var slider = document.getElementById("slider");
 
     noUiSlider.create(slider, {
@@ -66,21 +67,26 @@
       direction: "rtl",
       start: [6, 75],
       connect: [true, true, false],
-      tooltips: [true, true],
+      tooltips: [wNumb({decimals: 1}), wNumb({decimals: 1})],
       range: {
         "min": [0],
-				"25%": [25],
-				"50%": [50],
-				"75%": [75],
+				"42%": [10],
+				"64%": [75],
         "max": [100]
       },
       pips: {
-        mode: "range",
-        values: [25, 50, 75],
-        density: 2.5,
-				stepped: true,
+        mode: "steps",
+				density: 5,
       }
     });
+		slider.noUiSlider.on('change', function (values, handle) {
+			if (handle == 1 && values[handle] < 75) {
+				slider.noUiSlider.set([values[0], 75]);
+			}
+			if (handle == 0 && values[handle] > 10) {
+				slider.noUiSlider.set([10, values[1]]);
+			}
+		});
   </script>
 </body>
 </html>
