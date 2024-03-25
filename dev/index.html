@@ -1,37 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>noUiSlider alpha experiment</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.css">
-    <style>
-        #slider {
-					height: 92vh; 
-					padding-top:  2.1vh;
-					padding-bottom: 2.1vh;
-			}
-    </style>
+  <title>noUiSlider alpha experiment</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.css">
+  <style>
+    body {
+      display: flex;
+      height: 95vh;
+    }
+		
+		#ingredients {
+			position: absolute;
+			top: 50px;
+		}
+
+		.text-box {
+			display: block;
+			margin-bottom: 210px;
+			width: 50%;
+		}
+
+    #slider-container {
+      width: 33px;
+      height: 100%;
+			margin-left: 50%;
+			margin-top: 5%;
+      display: flex;
+      align-items: right;
+      justify-content: right;
+			float: right;
+    }
+
+    #slider {
+      width: 50px;
+      height: 90%;
+      margin: 0 12px;
+    }
+
+    .noUi-handle {
+      width: 50px;
+      height: 50px;
+    }
+
+    .noUi-tooltip {
+      font-size: 24px;
+    }
+  </style>
 </head>
 <body>
-                <div id="slider" class="u-pull-right">
+  <div id="slider-container">
+    <div id="slider"></div>
+  </div>
+	<div id="ingredients">
+		<input type="text" placeholder="sugar" class="text-box">
+		<input type="text" placeholder="nib" class="text-box">
+		<input type="text" placeholder="butter" class="text-box">
+	</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.js"></script>
+  <script>
+    var slider = document.getElementById("slider");
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.js"></script>
-    <script>
-        var slider = document.getElementById('slider');
-
-        noUiSlider.create(slider, {
-						orientation: 'vertical',
-					  direction: 'rtl',
-						start: [6, 75],
-					  connect: [true, true, false],
-						padding: [0, 0],
-						tooltips: [true, true],
-						range: {
-								'min': [0],
-								'max': [100]
-						}
-        });
-    </script>
-									</div>
+    noUiSlider.create(slider, {
+      orientation: "vertical",
+      direction: "rtl",
+      start: [6, 75],
+      connect: [true, true, false],
+      tooltips: [true, true],
+      range: {
+        "min": [0],
+				"25%": [25],
+				"50%": [50],
+				"75%": [75],
+        "max": [100]
+      },
+      pips: {
+        mode: "range",
+        values: [25, 50, 75],
+        density: 2.5,
+				stepped: true,
+      }
+    });
+  </script>
 </body>
 </html>
