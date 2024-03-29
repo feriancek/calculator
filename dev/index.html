@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>nuCalc</title>
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.css">
+	<title>nuCalc</title>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins">
 	<style>
-    body {
+		body {
 			font-family: 'Futura', 'Poppins', Arial, sans-serif;
 			font-size: 21px;
-      height: 100vh;
+			height: 100vh;
 			justify-content: center;
-      overflow: hidden;
+			overflow: hidden;
 			display: flex;
 			margin: 5vh;
-    }
+		}
+
 		.text-box {
 			display: block;
 			width: 50%;
 			font-size: 21px;
 		}
+
 		#ingredients {
 			width: 210px;
 			display: flex;
@@ -27,71 +30,91 @@
 			justify-content: flex-start;
 			gap: 13vh
 		}
-    #slider {
-      width: 21px;
+
+		#slider {
+			width: 21px;
 			height: 84vh;
-			margin-right : 21%;
-    }
-    .noUi-tooltip {
-      font-size: 21px;
-    }
+			margin-right: 21%;
+		}
+
+		.noUi-tooltip {
+			font-size: 21px;
+		}
+
 		.noUi-connect {
 			background: #0151AE;
 		}
-  </style>
+	</style>
 </head>
+
 <body>
 	<div id="ingredients">
 		<label for="total">Total:
-			<input type="text" id="total" placeholder="28.82" class="text-box"> </label>
+			<input type="text" id="total" class="text-box" disabled> </label>
 		<label for="sugar">Sugar:
-			<input type="text" id="sugar" placeholder="7.205" class="text-box"></label>
+			<input type="text" id="sugar" class="text-box" disabled></label>
 		<label for="nib">Nib:
-			<input type="text" id="nib" placeholder="21.615" class="text-box"></label>
+			<input type="text" id="nib" class="text-box"></label>
 		<label for="butter">Butter:
-			<input type="text" id="butter" placeholder="0.605" class="text-box"></label>
+			<input type="text" id="butter" class="text-box" disabled></label>
 	</div>
-    <div id="slider"></div>
-	
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.js"></script>
+	<div id="slider"></div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js"></script>
 	<script>
-    var slider = document.getElementById("slider");
+		var slider = document.getElementById("slider");
+		document.getElementById("nib").value = 21.615;
 
-    noUiSlider.create(slider, {
-      orientation: "vertical",
-      direction: "rtl",
-      start: [2.1, 75],
-      connect: [true, true, false],
-      tooltips: [wNumb({decimals: 2}), wNumb({decimals: 1})],
-      range: {
-        "min": [0, 0.05],
+		noUiSlider.create(slider, {
+			orientation: "vertical",
+			direction: "rtl",
+			start: [2.1, 75],
+			connect: [true, true, false],
+			tooltips: [wNumb({ decimals: 2 }), wNumb({ decimals: 1 })],
+			range: {
+				"min": [0, 0.05],
 				"65%": [5],
-				"70%": [51,0.5],
-        "max": [100]
-      },
-      pips: {
-        mode: "values",
+				"70%": [51, 0.5],
+				"max": [100]
+			},
+			pips: {
+				mode: "values",
 				values: [1, 2, 3, 4, 50, 75],
 				density: 2.5,
 				stepped: true,
-      }
-    });
+			}
+		});
 		slider.noUiSlider.on('change', function (values, handle) {
 			handle === 1 && values[handle] < 50 ? slider.noUiSlider.set([null, 50]) : null;
- 			handle === 0 && values[handle] > 5 ? slider.noUiSlider.set([5, null]) : null;
-
+			handle === 0 && values[handle] > 5 ? slider.noUiSlider.set([5, null]) : null;
+			
+			calculate()
 		});
 		var pips = slider.querySelectorAll('.noUi-value');
 		function clickOnPip() {
-				var value = Number(this.getAttribute('data-value'));
-				slider.noUiSlider.set(value < 10 ? [value, null] : [null, value]);				
+			var value = Number(this.getAttribute('data-value'));
+			slider.noUiSlider.set(value < 10 ? [value, null] : [null, value]);
 		}
 		for (var i = 0; i < pips.length; i++) {
-				//TODO what the docs say: For this example. Do this in CSS!
-				pips[i].style.cursor = 'pointer';
-				pips[i].addEventListener('click', clickOnPip);
-		}	
-  </script>
+			//TODO what the docs say: For this example. Do this in CSS!
+			pips[i].style.cursor = 'pointer';
+			pips[i].addEventListener('click', clickOnPip); 
+		}
+		function calculate() {
+			var sugarContent = 100 - parseFloat(slider.noUiSlider.get(true)[1]);
+			var butterContent = parseFloat(slider.noUiSlider.get(true)[0]);
+			var nibQuantity = parseFloat(document.getElementById("nib").value);
+			
+			var totalQuantity = 100*(nibQuantity /(100 - sugarContent - butterContent));
+			var sugarQuantity = totalQuantity * sugarContent;
+			var butterQuantity = totalQuantity * butterContent;
+
+			document.getElementById("total").value = totalQuantity.toFixed(3);
+			document.getElementById("sugar").value = sugarQuantity.toFixed(3);
+			document.getElementById("butter").value = butterQuantity.toFixed(3);
+		}
+		calculate();
+	</script>
 </body>
 </html>
