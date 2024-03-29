@@ -78,17 +78,14 @@
       }
     });
 		slider.noUiSlider.on('change', function (values, handle) {
-			if (handle == 1 && values[handle] < 50) {
-				slider.noUiSlider.set([values[0], 50]);
-			}
-			if (handle == 0 && values[handle] > 5) {
-				slider.noUiSlider.set([5, values[1]]);
-			}
+			handle === 1 && values[handle] < 50 ? slider.noUiSlider.set([null, 50]) : null;
+ 			handle === 0 && values[handle] > 5 ? slider.noUiSlider.set([5, null]) : null;
+
 		});
 		var pips = slider.querySelectorAll('.noUi-value');
 		function clickOnPip() {
 				var value = Number(this.getAttribute('data-value'));
-				slider.noUiSlider.set(value);
+				slider.noUiSlider.set(value < 10 ? [value, null] : [null, value]);				
 		}
 		for (var i = 0; i < pips.length; i++) {
 				//TODO what the docs say: For this example. Do this in CSS!
