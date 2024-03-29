@@ -1,41 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>noUiSlider alpha experiment</title>
+  <title>nuCalc</title>
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.css">
   <style>
     body {
-      display: flex;
+			justify-content: center;
       height: 100vh;
+			margin-top: 5vh;
       overflow: hidden;
+			display: flex;
     }
-		
-		#ingredients {
-			position: absolute;
-			top: 50px;
-		}
-
 		.text-box {
 			display: block;
-			margin-bottom: 20vh;
-			width: 50%;
+			margin-bottom: 21vh;
+			width: 42%;
 		  font-size: 21px;
 		}
-
-    #slider-container {
-      width: 42px;
-			margin-left: 75%;
-			margin-top: 5%;
+    #slider {
+      width: 21px;
 			margin-bottom: 10vh;
-      display: flex;
     }
-
-    .noUi-handle {
-      width: 50px;
-      height: 50px;
-    }
-
     .noUi-tooltip {
       font-size: 21px;
     }
@@ -45,16 +31,14 @@
   </style>
 </head>
 <body>
-  <div id="slider-container">
-    <div id="slider"></div>
-  </div>
-	<div id="ingredients">
+	<div >
 		<input type="text" placeholder="batch" class="text-box">
 		<input type="text" placeholder="sugar" class="text-box">
 		<input type="text" placeholder="nib" class="text-box">
 		<input type="text" placeholder="butter" class="text-box">
-
 	</div>
+    <div id="slider"></div>
+	
   <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js"></script>
 	<script>
@@ -65,17 +49,18 @@
       direction: "rtl",
       start: [4, 75],
       connect: [true, true, false],
-      tooltips: [wNumb({decimals: 2}), wNumb({decimals: 0})],
+      tooltips: [wNumb({decimals: 2}), wNumb({decimals: 1})],
       range: {
-        "min": [0],
+        "min": [0, 0.05],
 				"65%": [5],
-				"70%": [51,1],
+				"70%": [51,0.5],
         "max": [100]
       },
       pips: {
         mode: "values",
 				values: [1, 2, 3, 4, 50, 75],
-				density: 2,
+				density: 2.5,
+				stepped: true,
       }
     });
 		slider.noUiSlider.on('change', function (values, handle) {
