@@ -4,26 +4,33 @@
   <title>nuCalc</title>
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.css">
-  <style>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins">
+	<style>
     body {
-			justify-content: center;
+			font-family: 'Futura', 'Poppins', Arial, sans-serif;
+			font-size: 21px;
       height: 100vh;
-			margin-top: 5vh;
+			justify-content: center;
       overflow: hidden;
 			display: flex;
+			margin: 5vh;
     }
 		.text-box {
 			display: block;
-			margin-bottom: 21vh;
-			width: 42%;
-		  font-size: 21px;
+			width: 50%;
+			font-size: 21px;
 		}
 		#ingredients {
-			width: 150px;
+			width: 210px;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			gap: 13vh
 		}
     #slider {
       width: 21px;
 			height: 84vh;
+			margin-right : 21%;
     }
     .noUi-tooltip {
       font-size: 21px;
@@ -35,10 +42,14 @@
 </head>
 <body>
 	<div id="ingredients">
-		<input type="text" placeholder="batch" class="text-box">
-		<input type="text" placeholder="sugar" class="text-box">
-		<input type="text" placeholder="nib" class="text-box">
-		<input type="text" placeholder="butter" class="text-box">
+		<label for="total">Total:
+			<input type="text" id="total" placeholder="28.82" class="text-box"> </label>
+		<label for="sugar">Sugar:
+			<input type="text" id="sugar" placeholder="7.205" class="text-box"></label>
+		<label for="nib">Nib:
+			<input type="text" id="nib" placeholder="21.615" class="text-box"></label>
+		<label for="butter">Butter:
+			<input type="text" id="butter" placeholder="0.605" class="text-box"></label>
 	</div>
     <div id="slider"></div>
 	
@@ -50,7 +61,7 @@
     noUiSlider.create(slider, {
       orientation: "vertical",
       direction: "rtl",
-      start: [4, 75],
+      start: [2.1, 75],
       connect: [true, true, false],
       tooltips: [wNumb({decimals: 2}), wNumb({decimals: 1})],
       range: {
