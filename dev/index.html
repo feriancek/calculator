@@ -49,7 +49,7 @@
 
 <body>
 	<div id="ingredients">
-		<label for="total">Total:
+		<label for="total">Total(kg):
 			<input type="text" id="total" class="text-box" disabled> </label>
 		<label for="sugar">Sugar:
 			<input type="text" id="sugar" class="text-box" disabled></label>
@@ -71,7 +71,10 @@
 			direction: "rtl",
 			start: [2.1, 75],
 			connect: [true, true, false],
-			tooltips: [wNumb({ decimals: 2 }), wNumb({ decimals: 1 })],
+			tooltips: [
+				wNumb({suffix: '%', decimals: 2 }), 
+				wNumb({suffix: '%', decimals: 1 })
+			],
 			range: {
 				"min": [0, 0.05],
 				"65%": [5],
@@ -80,7 +83,7 @@
 			},
 			pips: {
 				mode: "values",
-				values: [1, 2, 3, 4, 50, 75],
+				values: [0, 1, 2, 3, 4, 50, 75, 100],
 				density: 2.5,
 				stepped: true,
 			}
@@ -100,6 +103,9 @@
 			//TODO what the docs say: For this example. Do this in CSS!
 			pips[i].style.cursor = 'pointer';
 			pips[i].addEventListener('click', clickOnPip); 
+			if (pips[i].getAttribute('data-value') === '0') {
+        		pips[i].textContent += '%';
+    		}
 		}
 		function calculate() {
 			var sugarContent = 100 - parseFloat(slider.noUiSlider.get(true)[1]);
