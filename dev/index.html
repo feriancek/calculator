@@ -85,7 +85,7 @@
 				stepped: true,
 			}
 		});
-		slider.noUiSlider.on('change', function (values, handle) {
+		slider.noUiSlider.on('update', function (values, handle) {
 			handle === 1 && values[handle] < 50 ? slider.noUiSlider.set([null, 50]) : null;
 			handle === 0 && values[handle] > 5 ? slider.noUiSlider.set([5, null]) : null;
 			
