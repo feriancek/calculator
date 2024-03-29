@@ -63,30 +63,39 @@
     noUiSlider.create(slider, {
       orientation: "vertical",
       direction: "rtl",
-      start: [6, 75],
+      start: [4, 75],
       connect: [true, true, false],
-      tooltips: [wNumb({decimals: 1}), wNumb({decimals: 1})],
+      tooltips: [wNumb({decimals: 2}), wNumb({decimals: 0})],
       range: {
         "min": [0],
-				"25%": [5],
-				"50%": [10],
-				"51%": [51],
+				"65%": [5],
+				"70%": [51,1],
         "max": [100]
       },
       pips: {
         mode: "values",
-				values: [2, 4, 6, 8, 10, 60, 70, 80, 90],
-				density: 2.5,
+				values: [1, 2, 3, 4, 50, 75],
+				density: 2,
       }
     });
 		slider.noUiSlider.on('change', function (values, handle) {
-			if (handle == 1 && values[handle] < 60) {
-				slider.noUiSlider.set([values[0], 60]);
+			if (handle == 1 && values[handle] < 50) {
+				slider.noUiSlider.set([values[0], 50]);
 			}
-			if (handle == 0 && values[handle] > 10) {
-				slider.noUiSlider.set([10, values[1]]);
+			if (handle == 0 && values[handle] > 5) {
+				slider.noUiSlider.set([5, values[1]]);
 			}
 		});
+		var pips = slider.querySelectorAll('.noUi-value');
+		function clickOnPip() {
+				var value = Number(this.getAttribute('data-value'));
+				slider.noUiSlider.set(value);
+		}
+		for (var i = 0; i < pips.length; i++) {
+				//TODO what the docs say: For this example. Do this in CSS!
+				pips[i].style.cursor = 'pointer';
+				pips[i].addEventListener('click', clickOnPip);
+		}	
   </script>
 </body>
 </html>
