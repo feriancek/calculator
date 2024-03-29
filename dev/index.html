@@ -108,7 +108,7 @@
 			
 			var totalQuantity = 100*(nibQuantity /(100 - sugarContent - butterContent));
 			var sugarQuantity = totalQuantity * (sugarContent/100);
-			var butterQuantity = totalQuantity * butterContent;
+			var butterQuantity = totalQuantity * (butterContent/100);
 
 			document.getElementById("total").value = totalQuantity.toFixed(3);
 			document.getElementById("sugar").value = sugarQuantity.toFixed(3);
