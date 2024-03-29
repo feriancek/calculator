@@ -107,7 +107,7 @@
 			var nibQuantity = parseFloat(document.getElementById("nib").value);
 			
 			var totalQuantity = 100*(nibQuantity /(100 - sugarContent - butterContent));
-			var sugarQuantity = totalQuantity * sugarContent;
+			var sugarQuantity = totalQuantity * (sugarContent/100);
 			var butterQuantity = totalQuantity * butterContent;
 
 			document.getElementById("total").value = totalQuantity.toFixed(3);
