@@ -43,9 +43,9 @@ for (var i = 0; i < pips.length; i++) {
     }
 }
 function calculate() {
-    var sugarContent = 100 - parseFloat(slider.noUiSlider.get(true)[1]);
-    var butterContent = parseFloat(slider.noUiSlider.get(true)[0]);
-    var nibQuantity = parseFloat(document.getElementById("nib").value);
+    var sugarContent = 100 - slider.noUiSlider.get(true)[1];
+    var butterContent = slider.noUiSlider.get(true)[0];
+    var nibQuantity = document.getElementById("nib").value;
 
     var totalQuantity = 100 * (nibQuantity / (100 - sugarContent - butterContent));
     var sugarQuantity = totalQuantity * (sugarContent / 100);
@@ -55,4 +55,16 @@ function calculate() {
     document.getElementById("sugar").value = sugarQuantity.toFixed(3);
     document.getElementById("butter").value = butterQuantity.toFixed(3);
 }
+
+// Validation for nibs input box.
+document.getElementById('nib').addEventListener('input', function (e) {
+    // Numbers only, one decimal place (optional), three numbers after it (optional)
+    var validPattern = /^\d*\.?\d{0,3}$/;
+
+    if (!validPattern.test(e.target.value)) {
+        var newValue = e.target.value.substring(0, e.target.value.length - 1);
+        e.target.value = newValue;
+    }
+});
+
 calculate();
