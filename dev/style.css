@@ -42,6 +42,10 @@ input[type="number"] {
     width: 100px;
 }
 
+.noUi-connect {
+    background: #0151AE;
+}
+
 @media (max-width: 768px) {
     .container {
         flex-wrap: nowrap;
