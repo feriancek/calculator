@@ -23,8 +23,10 @@ body {
     margin: 10px 0 10px 0px;
 }
 
-input[type="text"] {
-    padding: 8px;
+input[type="text"],
+input[type="number"] {
+    padding: 16px;
+    width: 100%;
     box-sizing: border-box;
 }
 
