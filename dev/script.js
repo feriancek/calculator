@@ -7,8 +7,8 @@ noUiSlider.create(slider, {
     start: [2.1, 75],
     connect: [true, true, false],
     tooltips: [
-        wNumb({ suffix: '%', decimals: 2 }),
-        wNumb({ suffix: '%', decimals: 1 })
+        wNumb({ decimals: 2 }),
+        wNumb({ decimals: 1 })
     ],
     range: {
         "min": [0, 0.05],
