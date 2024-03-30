@@ -58,12 +58,24 @@ function calculate() {
 
 // Validation for nibs input box.
 document.getElementById('nib').addEventListener('input', function (e) {
+    var min_nib = 0;
+    var max_nib = 40;
+
     // Numbers only, one decimal place (optional), three numbers after it (optional)
     var validPattern = /^\d*\.?\d{0,3}$/;
 
     if (!validPattern.test(e.target.value)) {
         var newValue = e.target.value.substring(0, e.target.value.length - 1);
         e.target.value = newValue;
+    }
+
+    var currentValue = parseFloat(e.target.value);
+
+    if (!isNaN(currentValue)) {
+        e.target.value = Math.min(Math.max(currentValue, min_nib), max_nib);
+    }
+    else {
+        e.target.value = '';
     }
 });
 
