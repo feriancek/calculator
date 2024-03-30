@@ -1,0 +1,37 @@
+body {
+    font-family: 'Futura', 'Poppins', Arial, sans-serif;
+    font-size: 21px;
+    height: 100vh;
+    justify-content: center;
+    overflow: hidden;
+    display: flex;
+    margin: 5vh;
+}
+
+.text-box {
+    display: block;
+    width: 50%;
+    font-size: 21px;
+}
+
+#ingredients {
+    width: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 13vh
+}
+
+#slider {
+    width: 21px;
+    height: 84vh;
+    margin-right: 21%;
+}
+
+.noUi-tooltip {
+    font-size: 21px;
+}
+
+.noUi-connect {
+    background: #0151AE;
+}
