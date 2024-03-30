@@ -75,8 +75,7 @@ document.getElementById('nib').addEventListener('input', function (e) {
     if (e.target.value !== '' && !trailingDecimalPattern.test(e.target.value)) {
         var currentValue = parseFloat(e.target.value);
 
-        if (currentValue < 0)
-        {
+        if (currentValue < 0) {
             currentValue = 0;
         }
 
@@ -86,6 +85,8 @@ document.getElementById('nib').addEventListener('input', function (e) {
     if (e.target.value === '.') {
         e.target.value = '0.';
     }
+
+    calculate();
 });
 
 calculate();
