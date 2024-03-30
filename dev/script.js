@@ -58,24 +58,33 @@ function calculate() {
 
 // Validation for nibs input box.
 document.getElementById('nib').addEventListener('input', function (e) {
-    var min_nib = 0;
-    var max_nib = 40;
+    var min = 0;
 
-    // Numbers only, one decimal place (optional), three numbers after it (optional)
     var validPattern = /^\d*\.?\d{0,3}$/;
+    var trailingDecimalPattern = /^\d+\.$/;
 
-    if (!validPattern.test(e.target.value)) {
+    if (trailingDecimalPattern.test(e.target.value) || validPattern.test(e.target.value)) {
+        // Allow numbers with a trailing decimal point to be entered
+    } else {
+        // If input does not match, revert to a valid format by removing the last character
         var newValue = e.target.value.substring(0, e.target.value.length - 1);
         e.target.value = newValue;
     }
 
-    var currentValue = parseFloat(e.target.value);
+    // Clamp the numeric part of the value while ignoring the trailing decimal point
+    if (e.target.value !== '' && !trailingDecimalPattern.test(e.target.value)) {
+        var currentValue = parseFloat(e.target.value);
 
-    if (!isNaN(currentValue)) {
-        e.target.value = Math.min(Math.max(currentValue, min_nib), max_nib);
+        if (currentValue < 0)
+        {
+            currentValue = 0;
+        }
+
+        e.target.value = currentValue.toString();
     }
-    else {
-        e.target.value = '';
+
+    if (e.target.value === '.') {
+        e.target.value = '0.';
     }
 });
 
