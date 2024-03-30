@@ -10,17 +10,30 @@
 </head>
 
 <body>
-	<div id="ingredients">
-		<label for="total">Total(kg):
-			<input type="number" id="total" class="text-box" disabled> </label>
-		<label for="sugar">Sugar:
-			<input type="number" id="sugar" class="text-box" disabled></label>
-		<label for="nib">Nib:
-			<input type="text" id="nib" class="text-box" inputmode="decimal" pattern="[0-9]*"></label>
-		<label for="butter">Butter:
-			<input type="number" id="butter" class="text-box" disabled></label>
+	<div class="container">
+		<div class="inputs">
+			<div>
+				<label for="total">Total (kg)</label>
+				<input type="number" id="total" disabled>
+			</div>
+			<div>
+				<label for="sugar">Sugar</label>
+				<input type="number" id="sugar" disabled>
+			</div>
+			<div>
+				<label for="nib">Nib</label>
+				<input type="text" id="nib" class="text-box" inputmode="decimal" pattern="[0-9]*">
+			</div>
+			<div>
+				<label for="butter">Butter</label>
+				<input type="number" id="butter" disabled>
+			</div>
+		</div>
+		<div class="slider-container">
+			<div id="slider" class="vertical-slider"></div>
+		</div>
 	</div>
-	<div id="slider"></div>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js"></script>
 	<script src="script.js"></script>
