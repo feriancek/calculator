@@ -1,32 +1,30 @@
 body {
     font-family: 'Futura', 'Poppins', Arial, sans-serif;
-    font-size: 21px;
+    font-size: 31px;
     height: 100%;
-    justify-content: center;
+    margin: 2vh;
+    justify-content: flex-start;
     overflow: hidden;
     display: flex;
-    margin: 5vh;
     position: fixed
+}
+
+#inputs {
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .text-box {
     display: block;
-    width: 50%;
-    font-size: 21px;
-}
-
-#ingredients {
-    width: 210px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 13vh
+    width: 64%;
+    font-size: 42px;
 }
 
 #slider {
-    width: 21px;
-    height: 84vh;
-    margin-right: 21%;
+    width: 22px;
+    height: 87vh;
 }
 
 .noUi-tooltip {
