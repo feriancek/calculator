@@ -1,17 +1,15 @@
 body {
-    font-family: 'Futura', 'Poppins', Arial, sans-serif;
+    font-family: 'Poppins', Futura;
     font-size: 30px;
     height: 100%;
-    margin: 2vh;
+    box-sizing: border-box;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: flex-start;
-    position: fixed;
     overflow: hidden;
+    justify-content: space-between;
 }
 
 #inputs {
-    width: 220px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -20,15 +18,19 @@ body {
 input[type=number] {
   appearance: textfield;
   display: block;
-  width: 64%;
-  font-size: 40px;
+  font-size: 30px;
   text-align: center;
+  width: 100px;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 #slider {
-    width: 22px;
-    height: 87vh;
-    flex-grow: 1;
+    width: 21px;
+    height: 88vh;
+    margin-right: 80px;
+    margin-top: 1vh;
+    margin-left: 80px;
 }
 
 .noUi-connect {
