@@ -1,6 +1,6 @@
 body {
     font-family: 'Futura', 'Poppins', Arial, sans-serif;
-    font-size: 31px;
+    font-size: 30px;
     height: 100%;
     margin: 2vh;
     display: flex;
@@ -17,11 +17,12 @@ body {
     justify-content: space-evenly;
 }
 
-.text-box {
-    display: block;
-    width: 64%;
-    font-size: 42px;
-    text-align: center;
+input[type=number] {
+  appearance: textfield;
+  display: block;
+  width: 64%;
+  font-size: 40px;
+  text-align: center;
 }
 
 #slider {
@@ -30,27 +31,6 @@ body {
     flex-grow: 1;
 }
 
-.noUi-tooltip {
-    font-size: 21px;
-}
-
 .noUi-connect {
     background: #0151AE;
-}
-
-/* 
-    Hide arrows on numnber fields for now.
-*/
-
-/* Chrome. */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* For Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
-    appearance: textfield;
 }
