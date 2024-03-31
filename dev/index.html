@@ -10,28 +10,15 @@
 </head>
 
 <body>
-	<div class="container">
-		<div class="inputs">
-			<div>
-				<label for="total">Total (kg)</label>
-				<input type="number" id="total" disabled>
-			</div>
-			<div>
-				<label for="sugar">Sugar</label>
-				<input type="number" id="sugar" disabled>
-			</div>
-			<div>
-				<label for="nib">Nib</label>
-				<input type="text" id="nib" class="text-box" inputmode="decimal" pattern="[0-9]*">
-			</div>
-			<div>
-				<label for="butter">Butter</label>
-				<input type="number" id="butter" disabled>
-			</div>
-		</div>
-		<div class="slider-container">
-			<div id="slider" class="vertical-slider"></div>
-		</div>
+	<div id="inputs">
+		<label for="total">Total (kg)
+			<input type="number" id="total" disabled> </label>
+		<label for="sugar">Sugar
+			<input type="number" id="sugar" disabled></label>
+		<label for="nib">Nib
+			<input type="number" id="nib" pattern="[0-9]*" inputmode="decimal"></label>
+		<label for="butter">Butter
+			<input type="number" id="butter" disabled></label>
 	</div>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.js"></script>

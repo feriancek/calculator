@@ -1,68 +1,36 @@
 body {
+    font-family: 'Futura', 'Poppins', Arial, sans-serif;
+    font-size: 30px;
+    height: 100%;
+    margin: 2vh;
     display: flex;
-    justify-content: center;
-    padding: 5px;
-    font-family: 'Poppins', sans-serif;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    position: fixed;
+    overflow: hidden;
 }
 
-.container {
-    display: flex;
-    width: 100%;
-    max-width: 960px;
-}
-
-.inputs {
-    display: flex;
-    flex-direction: column;
-    padding-right: 20px;
-}
-
-.inputs div {
+#inputs {
+    width: 220px;
     display: flex;
     flex-direction: column;
-    margin: 10px 0 10px 0px;
+    justify-content: space-evenly;
 }
 
-input[type="text"],
-input[type="number"] {
-    padding: 16px;
-    width: 100%;
-    box-sizing: border-box;
+input[type=number] {
+  appearance: textfield;
+  display: block;
+  width: 64%;
+  font-size: 40px;
+  text-align: center;
 }
 
-.slider-container {
+#slider {
+    width: 22px;
+    height: 87vh;
     flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.vertical-slider {
-        height: 84vh;
-        width: 22px;
 }
 
 .noUi-connect {
     background: #0151AE;
-}
-
-@media (max-width: 768px) {
-    .container {
-        flex-wrap: nowrap;
-    }
-
-    .inputs,
-    .slider-container {
-        flex-basis: auto;
-    }
-
-    .inputs {
-        padding-right: 10px;
-    }
-}
-
-/* For Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
-    appearance: textfield;
 }
