@@ -3,10 +3,11 @@ body {
     font-size: 31px;
     height: 100%;
     margin: 2vh;
-    justify-content: flex-start;
-    overflow: hidden;
     display: flex;
-    position: fixed
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    position: fixed;
+    overflow: hidden;
 }
 
 #inputs {
@@ -20,11 +21,13 @@ body {
     display: block;
     width: 64%;
     font-size: 42px;
+    text-align: center;
 }
 
 #slider {
     width: 22px;
     height: 87vh;
+    flex-grow: 1;
 }
 
 .noUi-tooltip {
