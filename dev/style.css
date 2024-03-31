@@ -59,6 +59,7 @@ input[type="number"] {
     .inputs {
         padding-right: 10px;
     }
+}
 
 /* For Firefox */
 input[type=number] {
