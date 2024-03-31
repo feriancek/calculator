@@ -38,8 +38,8 @@ input[type="number"] {
 }
 
 .vertical-slider {
-    height: 300px;
-    width: 100px;
+        height: 84vh;
+        width: 22px;
 }
 
 .noUi-connect {
@@ -60,8 +60,8 @@ input[type="number"] {
         padding-right: 10px;
     }
 
-    .vertical-slider {
-        height: 84vh;
-        width: 22px;
-    }
+/* For Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
 }
