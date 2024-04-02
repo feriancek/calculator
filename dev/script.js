@@ -58,32 +58,17 @@ function calculate() {
 
 // Validation for nibs input box.
 document.getElementById('nib').addEventListener('input', function (e) {
-    var min = 0;
+    var inputValue = e.target.value;
 
-    var validPattern = /^\d*\.?\d{0,3}$/;
-    var trailingDecimalPattern = /^\d+\.$/;
+    // This validation logic fits:
+    //  Decimal numbers 0 through 9
+    //  A single decimal
+    //  Maximum precision
 
-    if (trailingDecimalPattern.test(e.target.value) || validPattern.test(e.target.value)) {
-        // Allow numbers with a trailing decimal point to be entered
-    } else {
-        // If input does not match, revert to a valid format by removing the last character
-        var newValue = e.target.value.substring(0, e.target.value.length - 1);
-        e.target.value = newValue;
-    }
+    var validPattern = /^\d*(\.\d{1,3})?$/;
 
-    // Clamp the numeric part of the value while ignoring the trailing decimal point
-    if (e.target.value !== '' && !trailingDecimalPattern.test(e.target.value)) {
-        var currentValue = parseFloat(e.target.value);
-
-        if (currentValue < 0) {
-            currentValue = 0;
-        }
-
-        e.target.value = currentValue.toString();
-    }
-
-    if (e.target.value === '.') {
-        e.target.value = '0.';
+    if (!validPattern.test(inputValue)) {
+        e.target.value = inputValue.substring(0, inputValue.length - 1);
     }
 
     calculate();
