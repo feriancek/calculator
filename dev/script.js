@@ -67,7 +67,7 @@ document.getElementById('nib').addEventListener('input', function (e) {
     //
     // NOTE: There is a known edge case with this pattern:
     //  Inablity to enter a decimal unless it is immediately after a 0, e.g. .123 .355, etc.
-    var validPattern = /^\d+(\.\d{1,3})?$/;
+    var validPattern = /^\d*(\.\d{1,3})?$/;
 
     if (!validPattern.test(inputValue)) {
         e.target.value = inputValue.substring(0, inputValue.length - 1);
