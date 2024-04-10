@@ -1,66 +1,29 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Refine Calculator</title>
-    <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins">
-    <link rel="stylesheet" href="https://skeleton-framework.github.io/css/skeleton.min.css">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/darkblue/apple-touch-icon.png">
-    <link rel="icon" href="images/darkblue/favicon.ico" type="image/x-icon">
-    <script type="text/javascript" src="scripts.js"></script>
+	<title>nuCalc</title>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins">
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Refine Calculator</h1>
-    <div class="container">
-        <div class="row">
-
-            <div class="one-third column">
-                <form id="refineForm">
-                    <label for="nibsQuantity">Quantity of Nibs (kg)</label>
-                    <input type="number" id="nibsQuantity" step="0.01" min="15" max="30" value="21"
-                        oninput="updateSliderValue('nibsQuantity', 'nibsQuantitySlider')" />
-                    <input type="range" id="nibsQuantitySlider" min="15" max="30" step="0.01" value="21"
-                        oninput="updateSliderValue('nibsQuantity', 'nibsQuantitySlider')" />
-
-                    <label for="butterQuantity">Quantity of Butter (kg)</label>
-                    <input type="number" id="butterQuantity" step="0.01" min="0" max="4" value="2"
-                        oninput="updateSliderValue('butterQuantity', 'butterQuantitySlider')" />
-                    <input type="range" id="butterQuantitySlider" min="0" max="4" step="0.01" value="2"
-                        oninput="updateSliderValue('butterQuantity', 'butterQuantitySlider')" />
-
-                    <label for="sugarQuantity">Quantity of Sugar (kg)</label>
-                    <input type="number" id="sugarQuantity" step="0.01" min="0" max="10" value="7.65"
-                        oninput="updateSliderValue('sugarQuantity', 'sugarQuantitySlider')" />
-                    <input type="range" id="sugarQuantitySlider" min="0" max="10" step="0.01" value="7.65"
-                        oninput="updateSliderValue('sugarQuantity', 'sugarQuantitySlider')" />
-                </form>
-            </div>
-
-            <div class="one-third column">
-                <div id="results">
-                    <p>Batch weight: <span id="batchResult">0.0</span> kg</p>
-                    <p>Butter percentage: <span id="butterPercentageResult">0.0</span>%</p>
-                    <p>Sugar percentage: <span id="sugarContentResult">0.0</span>%</p>
-                    <p>Chocolate content: <span id="chocolateContentResult">0.0</span>%</p>
-                </div>
-            </div>
-
-            <div class="one-third column">
-                <canvas id="contentsChart"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<div id="inputs">
+		<label for="total">Total (kg)
+			<input type="number" id="total" disabled> </label>
+		<label for="sugar">Sugar
+			<input type="number" id="sugar" disabled></label>
+		<label for="nib">Nib
+			<input type="number" id="nib" step="0.001" inputmode="decimal"></label>
+		<label for="butter">Butter
+			<input type="number" id="butter" disabled></label>
+	</div>
+	<div id="slider"></div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js"></script>
+	<script src="script.js"></script>
 </body>
 
 </html>
