@@ -1,10 +1,10 @@
 var slider = document.getElementById("slider");
-document.getElementById("nib").value = 21.615;
+document.getElementById("total").value = 33;
 
 noUiSlider.create(slider, {
     orientation: "vertical",
     direction: "rtl",
-    start: [2.1, 75],
+    start: [5, 75],
     connect: [true, true, false],
     tooltips: [
         wNumb({ decimals: 2 }),
@@ -45,19 +45,19 @@ for (var i = 0; i < pips.length; i++) {
 function calculate() {
     var sugarContent = 100 - slider.noUiSlider.get(true)[1];
     var butterContent = slider.noUiSlider.get(true)[0];
-    var nibQuantity = document.getElementById("nib").value;
+    var totalQuantity = document.getElementById("total").value;
 
-    var totalQuantity = 100 * (nibQuantity / (100 - sugarContent - butterContent));
     var sugarQuantity = totalQuantity * (sugarContent / 100);
     var butterQuantity = totalQuantity * (butterContent / 100);
+    var nibQuantity = totalQuantity - (sugarQuantity + butterQuantity);
 
-    document.getElementById("total").value = totalQuantity.toFixed(3);
+    document.getElementById("nib").value = nibQuantity.toFixed(3);
     document.getElementById("sugar").value = sugarQuantity.toFixed(3);
     document.getElementById("butter").value = butterQuantity.toFixed(3);
 }
 
 // Validation for nibs input box.
-document.getElementById('nib').addEventListener('input', function (e) {
+document.getElementById('total').addEventListener('input', function (e) {
     var inputValue = e.target.value;
 
     // This validation logic fits:
