@@ -4,7 +4,7 @@ document.getElementById("total").value = 33;
 noUiSlider.create(slider, {
     orientation: "vertical",
     direction: "rtl",
-    start: [2.1, 75],
+    start: [5, 75],
     connect: [true, true, false],
     tooltips: [
         wNumb({ decimals: 2 }),
