@@ -51,7 +51,7 @@ function calculate() {
     var butterQuantity = totalQuantity * (butterContent / 100);
     var nibQuantity = totalQuantity - (sugarQuantity + butterQuantity);
 
-    document.getElementById("nib").value = totalQuantity.toFixed(3);
+    document.getElementById("nib").value = nibQuantity.toFixed(3);
     document.getElementById("sugar").value = sugarQuantity.toFixed(3);
     document.getElementById("butter").value = butterQuantity.toFixed(3);
 }
